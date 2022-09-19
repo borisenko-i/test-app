@@ -22,25 +22,6 @@ dependencies {
     implementation group: 'org.eclipse.jetty', name: 'jetty-servlet', version: '11.0.11'
 }
 
-
-//task buildDist(type: Tar, dependsOn: jar) {
-//    archiveFileName = "${jar.archiveBaseName.get()}-${jar.archiveVersion.get()}.tar.gz"
-//    destinationDirectory = file("$buildDir/dist")
-//    compression = Compression.GZIP
-//    from jar.archiveFile
-//}
-//
-//build.dependsOn buildDist
-//
-//jar {
-//    manifest {
-//        attributes(
-////                'Class-Path': configurations.runtimeClasspath.collect { it.getName() }.join(' '),
-//                'Main-Class': 'com.test_app.Main'
-//        )
-//    }
-//}
-
 application {
     mainClass = 'com.test_app.Main'
 }
