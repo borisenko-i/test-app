@@ -17,6 +17,6 @@ public class HttpResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createNewEntry(Entry entry) {
-        return Response.ok("New request received: " + entry.data).build();
+        return Response.ok("New request received: " + entry.data + "\n").build();
     }
 }
