@@ -4,6 +4,7 @@ import java.net.InetSocketAddress;
 import java.util.Map;
 import java.util.logging.Logger;
 
+import com.test_app.database.DbConnection;
 import com.test_app.resources.HttpResource;
 import org.eclipse.jetty.server.Connector;
 import org.eclipse.jetty.server.Server;
@@ -16,12 +17,14 @@ import org.glassfish.jersey.servlet.ServletContainer;
 @SuppressWarnings("all")
 public class Main {
     private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
+    private static DbConnection dbConnection;
 
     private Main() {}
 
     public static void main(String[] args) {
         Server server = createServer(args[0], Integer.parseInt(args[1]));
         String appAddress = args[0] + ":" + args[1];
+        setDbConnection(args[2], args[3], args[4]);
         try {
             server.start();
             LOGGER.info("Started app on " + appAddress);
@@ -51,5 +54,12 @@ public class Main {
         server.setStopAtShutdown(true);
 
         return server;
+    }
+
+    private static void setDbConnection(String url, String user, String password) {
+        dbConnection = new DbConnection();
+        dbConnection.url = url;
+        dbConnection.user = user;
+        dbConnection.password = password;
     }
 }
